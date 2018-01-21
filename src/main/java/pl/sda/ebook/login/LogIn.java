@@ -1,6 +1,7 @@
-package pl.sda.ebook.UI;
+package pl.sda.ebook.login;
 
 import pl.sda.ebook.registration.RegistrationController;
+import pl.sda.ebook.communication.Response;
 
 import java.util.Scanner;
 
@@ -15,6 +16,9 @@ public class LogIn {
     }
 
     public void logIn() {
-        System.out.println("");
+        System.out.println("Enter your login:");
+        String login = scanner.nextLine();
+        System.out.println("Enter your password:");
+        String psw = scanner.nextLine();
     }
 }

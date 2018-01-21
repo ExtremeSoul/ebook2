@@ -2,8 +2,10 @@ package pl.sda.ebook.registration;
 
 import org.junit.Before;
 import org.junit.Test;
+import pl.sda.ebook.communication.Response;
 import pl.sda.ebook.domain.User;
 import pl.sda.ebook.domain.UserStorage;
+import pl.sda.ebook.exception.UserAlreadyExistExceptions;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -23,24 +25,24 @@ public class RegistrationControllerTest {
     }
 
     @Test
-    public void shouldRegisterNewUser() {
+    public void shouldRegisterNewUser() throws UserAlreadyExistExceptions {
 
         Response result = new RegistrationController(userStorage).register(VALID_LOGIN, "123456");
         assertTrue(result.isSuccess());
-        assertTrue(userStorage.present(VALID_LOGIN));
+        assertTrue(userStorage.loginPresent(VALID_LOGIN));
     }
 
     @Test
-    public void shouldNotRegisterIfPswIsShort() {
+    public void shouldNotRegisterIfPswIsShort() throws UserAlreadyExistExceptions {
 
         Response result = new RegistrationController(userStorage).register(VALID_LOGIN, "1234");
         assertFalse(result.isSuccess());
-        assertEquals("Psw is too short", result.getMessage());
-        assertFalse(userStorage.present(VALID_LOGIN));
+        assertEquals("Password is too short", result.getMessage());
+        assertFalse(userStorage.loginPresent(VALID_LOGIN));
     }
 
     @Test
-    public void shouldRefuseToRegisterIfUserAlreadyExists() {
+    public void shouldRefuseToRegisterIfUserAlreadyExists() throws UserAlreadyExistExceptions {
 
         userStorage.add(new User(VALID_LOGIN, "123456"));
 

@@ -1,7 +1,8 @@
-package pl.sda.ebook.UI;
+package pl.sda.ebook.registration;
 
+import pl.sda.ebook.exception.UserAlreadyExistExceptions;
 import pl.sda.ebook.registration.RegistrationController;
-import pl.sda.ebook.registration.Response;
+import pl.sda.ebook.communication.Response;
 
 import java.util.Scanner;
 
@@ -15,19 +16,19 @@ public class SignIn {
         this.registrationController = registrationController;
     }
 
-    public void signIn() {
+    public void signIn() throws UserAlreadyExistExceptions {
 
         System.out.println("Enter your login:");
         String login = scanner.nextLine();
         System.out.println("Enter your password:");
         String psw = scanner.nextLine();
 
-        Response res = registrationController.register(login, psw);
+        Response response = registrationController.register(login, psw);
 
-        if (res.isSuccess()) {
+        if (response.isSuccess()) {
             System.out.println("Success!");
         } else {
-            System.out.println(res.getMessage());
+            System.out.println(response.getMessage());
         }
     }
 }

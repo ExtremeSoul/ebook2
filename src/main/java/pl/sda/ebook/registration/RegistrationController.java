@@ -1,7 +1,9 @@
 package pl.sda.ebook.registration;
 
+import pl.sda.ebook.communication.Response;
 import pl.sda.ebook.domain.User;
 import pl.sda.ebook.domain.UserStorage;
+import pl.sda.ebook.exception.UserAlreadyExistExceptions;
 
 public class RegistrationController {
 
@@ -11,11 +13,11 @@ public class RegistrationController {
         this.userStorage = userStorage;
     }
 
-    public Response register(String username, String pswd) {
+    public Response register(String username, String pswd) throws UserAlreadyExistExceptions {
 
         if (pswd.length() < 6) {
-            return new Response(false, "Psw is too short");
-        } else if (userStorage.present(username)) {
+            return new Response(false, "Password is too short");
+        } else if (userStorage.loginPresent(username)) {
             return new Response(false, "User already exists");
         } else userStorage.add(new User(username, pswd));
 

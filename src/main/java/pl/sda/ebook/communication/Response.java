@@ -1,4 +1,4 @@
-package pl.sda.ebook.registration;
+package pl.sda.ebook.communication;
 
 public class Response {
 
