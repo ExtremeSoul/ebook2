@@ -36,6 +36,16 @@ public class LoginControllerTest {
 
         userStorage.add(new User(VALID_LOGIN, "123456"));
 
+        Response result = new LoginController(userStorage).loginValiddation("kamil", "12345674");
+        assertFalse(result.isSuccess());
+        assertEquals("Password is not correct", result.getMessage());
+    }
+
+    @Test
+    public void shouldNotLogInUserWhenLoginIsCorrectAndPswIsInCorrect() throws UserAlreadyExistExceptions {
+
+        userStorage.add(new User(VALID_LOGIN, "123456"));
+
         Response result = new LoginController(userStorage).loginValiddation(VALID_LOGIN, "12345674");
         assertFalse(result.isSuccess());
         assertEquals("Password is not correct", result.getMessage());
