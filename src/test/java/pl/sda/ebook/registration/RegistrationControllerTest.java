@@ -1,6 +1,6 @@
 package pl.sda.ebook.registration;
 
-import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import pl.sda.ebook.domain.UserStorage;
 
@@ -10,9 +10,15 @@ import static org.junit.Assert.assertTrue;
 
 public class RegistrationControllerTest {
 
+    UserStorage userStorage;
+
+    @Before
+    public void setUp() {
+        userStorage = new UserStorage();
+    }
+
     @Test
     public void shouldRegisterNewUser() {
-        UserStorage userStorage = new UserStorage();
 
         RegistrationController registrationController = new RegistrationController(userStorage);
         Response result = new RegistrationController(userStorage).register("magda", "123456");
@@ -21,7 +27,6 @@ public class RegistrationControllerTest {
 
     @Test
     public void shouldNotRegisterIfPswIsShort() {
-        UserStorage userStorage = new UserStorage();
 
         RegistrationController registrationController = new RegistrationController(userStorage);
         Response result = new RegistrationController(userStorage).register("magda", "1234");
@@ -30,12 +35,11 @@ public class RegistrationControllerTest {
     }
 
     @Test
-    public void shouldRefuseToRegiserIfUserAlreadyExists() {
-        UserStorage userStorage = new UserStorage();
+    public void shouldRefuseToRegisterIfUserAlreadyExists() {
+
         userStorage.add("magda", "123456");
 
         Response result = new RegistrationController(userStorage).register("magda", "123456");
-
         assertFalse(result.isSuccess());
         assertEquals("User already exists", result.getMessage());
     }

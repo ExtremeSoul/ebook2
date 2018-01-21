@@ -5,11 +5,9 @@ public class RegistrationController {
 
     UserStorage userStorage;
 
-
     public RegistrationController(UserStorage userStorage) {
         this.userStorage = userStorage;
     }
-
 
     public Response register(String username, String pswd) {
 
@@ -19,9 +17,7 @@ public class RegistrationController {
             return new Response(false,"Psw is too short" );
         } else if (userStorage.present(username)) {
             return new Response(false,"User already exists" );
-
         }
-
         return isValid;
     }
 }
