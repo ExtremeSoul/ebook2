@@ -8,11 +8,11 @@ import java.util.Scanner;
 public class LogIn {
 
     private Scanner scanner;
-    private RegistrationController registrationController;
+    private LoginController loginController;
 
-    public LogIn(Scanner scanner, RegistrationController registrationController) {
+    public LogIn(Scanner scanner, LoginController loginController) {
         this.scanner = scanner;
-        this.registrationController = registrationController;
+        this.loginController = loginController;
     }
 
     public void logIn() {
@@ -20,5 +20,13 @@ public class LogIn {
         String login = scanner.nextLine();
         System.out.println("Enter your password:");
         String psw = scanner.nextLine();
+
+        Response response = loginController.loginValiddation(login, psw);
+
+        if (response.isSuccess()) {
+            System.out.println("Hello, " + login);
+        } else {
+            System.out.println(response.getMessage());
+        }
     }
 }

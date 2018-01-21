@@ -13,10 +13,9 @@ public class LoginController {
     }
 
     public Response loginValiddation(String username, String pswd) {
-        return new Response(true);
-//
-//        if (!(userStorage.passwoardPresent(username, pswd))) {
-//            return new Response(false, "Password is not correct");
-//        } else return new Response(true);
+
+        if (!(userStorage.passwordPresent(username, pswd))) {
+            return new Response(false, "Password is not correct");
+        } else return new Response(true);
     }
 }

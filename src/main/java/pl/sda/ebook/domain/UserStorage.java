@@ -16,5 +16,11 @@ public class UserStorage {
     public boolean loginPresent(String username) {
         return userDataSt.containsKey(username);
     }
+
+    public boolean passwordPresent(String login, String password) {
+        if (loginPresent(login)) {
+            return userDataSt.get(login).hasTheSamePasswordAs(password);
+        } else return false;
+    }
 }
 
