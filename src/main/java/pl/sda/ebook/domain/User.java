@@ -9,4 +9,9 @@ public class User {
         this.login = login;
         this.psw = psw;
     }
+
+    public String getLogin() {
+        return login;
+    }
+
 }

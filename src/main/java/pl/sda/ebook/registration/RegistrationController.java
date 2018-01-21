@@ -1,9 +1,11 @@
 package pl.sda.ebook.registration;
+
+import pl.sda.ebook.domain.User;
 import pl.sda.ebook.domain.UserStorage;
 
 public class RegistrationController {
 
-    UserStorage userStorage;
+    private UserStorage userStorage;
 
     public RegistrationController(UserStorage userStorage) {
         this.userStorage = userStorage;
@@ -11,13 +13,12 @@ public class RegistrationController {
 
     public Response register(String username, String pswd) {
 
-        Response isValid = new Response(true);
-
         if (pswd.length() < 6) {
-            return new Response(false,"Psw is too short" );
+            return new Response(false, "Psw is too short");
         } else if (userStorage.present(username)) {
-            return new Response(false,"User already exists" );
-        }
-        return isValid;
+            return new Response(false, "User already exists");
+        } else userStorage.add(new User(username, pswd));
+
+        return new Response(true);
     }
 }

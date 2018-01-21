@@ -4,10 +4,10 @@ import java.util.HashMap;
 
 public class UserStorage {
 
-    HashMap<String, String> userDataSt = new HashMap<String, String>();
+    HashMap<String, User> userDataSt = new HashMap<>();
 
-    public void add(String login, String password) {
-        userDataSt.put(login,password);
+    public void add(User user) {
+        userDataSt.put(user.getLogin(), user);
     }
 
     public boolean present(String username) {
