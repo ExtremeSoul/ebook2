@@ -3,6 +3,7 @@ package pl.sda.ebook.login;
 import pl.sda.ebook.registration.RegistrationController;
 import pl.sda.ebook.communication.Response;
 
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class LogIn {
@@ -15,7 +16,7 @@ public class LogIn {
         this.loginController = loginController;
     }
 
-    public void logIn() {
+    public void logIn() throws FileNotFoundException {
         System.out.println("Enter your login:");
         String login = scanner.nextLine();
         System.out.println("Enter your password:");
