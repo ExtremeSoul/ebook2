@@ -7,6 +7,8 @@ import pl.sda.ebook.domain.User;
 import pl.sda.ebook.domain.UserStorage;
 import pl.sda.ebook.exception.UserAlreadyExistExceptions;
 
+import java.io.IOException;
+
 import static org.junit.Assert.*;
 
 public class LoginControllerTest {
@@ -23,7 +25,7 @@ public class LoginControllerTest {
     }
 
     @Test
-    public void shouldLogInUserWhenLoginAndPswIsCorrect() throws UserAlreadyExistExceptions {
+    public void shouldLogInUserWhenLoginAndPswIsCorrect() throws UserAlreadyExistExceptions, IOException {
 
         userStorage.add(new User(VALID_LOGIN, "123456"));
 
@@ -32,7 +34,7 @@ public class LoginControllerTest {
     }
 
     @Test
-    public void shouldNotLogInUserWhenLoginAndPswIsInCorrect() throws UserAlreadyExistExceptions {
+    public void shouldNotLogInUserWhenLoginAndPswIsInCorrect() throws UserAlreadyExistExceptions, IOException {
 
         userStorage.add(new User(VALID_LOGIN, "123456"));
 
@@ -42,7 +44,7 @@ public class LoginControllerTest {
     }
 
     @Test
-    public void shouldNotLogInUserWhenLoginIsCorrectAndPswIsInCorrect() throws UserAlreadyExistExceptions {
+    public void shouldNotLogInUserWhenLoginIsCorrectAndPswIsInCorrect() throws UserAlreadyExistExceptions, IOException {
 
         userStorage.add(new User(VALID_LOGIN, "123456"));
 

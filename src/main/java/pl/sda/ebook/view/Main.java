@@ -1,5 +1,6 @@
 package pl.sda.ebook.view;
 
+import pl.sda.ebook.domain.DataWriter;
 import pl.sda.ebook.domain.UserStorage;
 import pl.sda.ebook.exception.UserAlreadyExistExceptions;
 import pl.sda.ebook.login.LogIn;
@@ -7,11 +8,12 @@ import pl.sda.ebook.login.LoginController;
 import pl.sda.ebook.registration.RegistrationController;
 import pl.sda.ebook.registration.SignIn;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) throws UserAlreadyExistExceptions {
+    public static void main(String[] args) throws UserAlreadyExistExceptions, IOException {
 
         UserStorage userStorage = new UserStorage();
         RegistrationController registrationController = new RegistrationController(userStorage);

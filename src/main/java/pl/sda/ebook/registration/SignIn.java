@@ -4,6 +4,7 @@ import pl.sda.ebook.exception.UserAlreadyExistExceptions;
 import pl.sda.ebook.registration.RegistrationController;
 import pl.sda.ebook.communication.Response;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class SignIn {
@@ -16,7 +17,7 @@ public class SignIn {
         this.registrationController = registrationController;
     }
 
-    public void signIn() throws UserAlreadyExistExceptions {
+    public void signIn() throws UserAlreadyExistExceptions, IOException {
 
         System.out.println("Enter your login:");
         String login = scanner.nextLine();

@@ -4,6 +4,7 @@ import pl.sda.ebook.exception.UserAlreadyExistExceptions;
 import pl.sda.ebook.login.LogIn;
 import pl.sda.ebook.registration.SignIn;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class OpenPanel {
@@ -18,7 +19,7 @@ public class OpenPanel {
         this.scanner = scanner;
     }
 
-    public void openPanel() throws UserAlreadyExistExceptions {
+    public void openPanel() throws UserAlreadyExistExceptions, IOException {
 
 //        Scanner scanner = new Scanner(System.in);
         boolean isWorking = true;

@@ -7,6 +7,8 @@ import pl.sda.ebook.domain.User;
 import pl.sda.ebook.domain.UserStorage;
 import pl.sda.ebook.exception.UserAlreadyExistExceptions;
 
+import java.io.IOException;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -25,7 +27,7 @@ public class RegistrationControllerTest {
     }
 
     @Test
-    public void shouldRegisterNewUser() throws UserAlreadyExistExceptions {
+    public void shouldRegisterNewUser() throws UserAlreadyExistExceptions, IOException {
 
         Response result = new RegistrationController(userStorage).register(VALID_LOGIN, "123456");
         assertTrue(result.isSuccess());
@@ -33,7 +35,7 @@ public class RegistrationControllerTest {
     }
 
     @Test
-    public void shouldNotRegisterIfPswIsShort() throws UserAlreadyExistExceptions {
+    public void shouldNotRegisterIfPswIsShort() throws UserAlreadyExistExceptions, IOException {
 
         Response result = new RegistrationController(userStorage).register(VALID_LOGIN, "1234");
         assertFalse(result.isSuccess());
@@ -42,7 +44,7 @@ public class RegistrationControllerTest {
     }
 
     @Test
-    public void shouldRefuseToRegisterIfUserAlreadyExists() throws UserAlreadyExistExceptions {
+    public void shouldRefuseToRegisterIfUserAlreadyExists() throws UserAlreadyExistExceptions, IOException {
 
         userStorage.add(new User(VALID_LOGIN, "123456"));
 
