@@ -31,6 +31,9 @@ public class Main {
 
         OpenPanel startOpenPanel = new OpenPanel(signIn, logIn, scanner);
         startOpenPanel.openPanel();
+        LoggedInMenu loggedInMenu = new LoggedInMenu(scanner);
+        loggedInMenu.chooseActionAfterLoggingIn();
+
 
     }
 }
