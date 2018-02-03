@@ -30,4 +30,15 @@ public class DataWriter {
         return contain;
     }
 
+    public boolean containsBothUsernameAndPassword(String login, String password) throws FileNotFoundException {
+        Scanner scanner = new Scanner(userDatabase);
+        boolean contain = false;
+        while (scanner.hasNext()) {
+            String line = scanner.nextLine();
+            if (line.contains(login + ";" + password)) {
+                contain = true;
+            }
+        }
+        return contain;
+    }
 }

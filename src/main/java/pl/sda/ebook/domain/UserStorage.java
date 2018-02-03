@@ -26,9 +26,10 @@ public class UserStorage {
     }
 
     public boolean passwordPresent(String login, String password) throws FileNotFoundException {
-        if (loginPresent(login)) {
-            return userDataSt.get(login).hasTheSamePasswordAs(password);
-        } else return false;
+//        if (loginPresent(login)) {
+//            return userDataSt.get(login).hasTheSamePasswordAs(password);
+//        } else return false;
+        return dataWriter.containsBothUsernameAndPassword(login, password);
     }
 }
 
