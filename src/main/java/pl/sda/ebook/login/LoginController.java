@@ -10,6 +10,7 @@ public class LoginController {
 
     private UserStorage userStorage;
 
+
     public LoginController(UserStorage userStorage) {
         this.userStorage = userStorage;
     }

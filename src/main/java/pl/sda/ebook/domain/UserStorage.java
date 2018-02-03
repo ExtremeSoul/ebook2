@@ -7,29 +7,37 @@ import java.io.IOException;
 import java.util.HashMap;
 
 public class UserStorage {
-    DataWriter dataWriter = new DataWriter();
+    public UserWriter getUserWriter() {
+        return userWriter;
+    }
 
+    private UserWriter userWriter;
     HashMap<String, User> userDataSt = new HashMap<>();
 
 
+    public UserStorage(UserWriter userWriter) {
+        this.userWriter = userWriter;
+    }
+
+
     public void add(User user) throws UserAlreadyExistExceptions, IOException {
-        if(loginPresent(user.getLogin())) throw new UserAlreadyExistExceptions("User already exist in storage");
+        if (loginPresent(user.getLogin())) throw new UserAlreadyExistExceptions("User already exist in storage");
         else {
             userDataSt.put(user.getLogin(), user);
-            dataWriter.addUser(user.getLogin(), user.getPsw());
+            userWriter.addUser(user.getLogin(), user.getPsw());
         }
     }
 
     public boolean loginPresent(String username) throws FileNotFoundException {
         //return userDataSt.containsKey(username);
-        return dataWriter.readerUsers(username);
+        return userWriter.containsUsername(username);
     }
 
     public boolean passwordPresent(String login, String password) throws FileNotFoundException {
 //        if (loginPresent(login)) {
 //            return userDataSt.get(login).hasTheSamePasswordAs(password);
 //        } else return false;
-        return dataWriter.containsBothUsernameAndPassword(login, password);
+        return userWriter.containsBothUsernameAndPassword(login, password);
     }
 }
 
