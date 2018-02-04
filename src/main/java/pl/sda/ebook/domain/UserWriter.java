@@ -4,6 +4,10 @@ import java.io.*;
 import java.util.Scanner;
 
 public class UserWriter {
+    public File getUserDatabase() {
+        return userDatabase;
+    }
+
     private File userDatabase = new File("C:\\Users\\jakub\\Desktop\\Code\\UsersDatabase.txt");
 
 

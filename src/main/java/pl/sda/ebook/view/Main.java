@@ -19,6 +19,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         UserWriter userWriter = new UserWriter();
         UserStorage userStorage = new UserStorage(userWriter);
+        userStorage.downloadUsersDatabase();
         RegistrationController registrationController = new RegistrationController(userStorage);
         LoginController loginController = new LoginController(userStorage);
         BooksWriter booksWriter = new BooksWriter();
