@@ -37,8 +37,9 @@ public class BooksStorage {
 
     public void addBookToStorage(Book book) throws IOException {
 //        booksTotalStorage.put(book.getName(), book);
-        booksWriter.addBooktoStorage(book);
+        booksWriter.addBookToStorage(book);
     }
+
     public void showListOfBooksAndAuthors(){
         String bookTitleList = null;
         if(bookTitleList != null){
