@@ -17,19 +17,20 @@ public class SignIn {
         this.registrationController = registrationController;
     }
 
-    public void signIn() throws UserAlreadyExistExceptions, IOException {
+    public Response signIn() throws UserAlreadyExistExceptions, IOException {
 
         System.out.println("Enter your login:");
         String login = scanner.nextLine();
         System.out.println("Enter your password:");
         String psw = scanner.nextLine();
 
-        Response response = registrationController.register(login, psw);
 
-        if (response.isSuccess()) {
-            System.out.println("Success!");
-        } else {
-            System.out.println(response.getMessage());
-        }
+//        Response response = registrationController.register(login, psw);
+//        if (response.isSuccess()) {
+//            System.out.println("Success!");
+//        } else {
+//            System.out.println(response.getMessage());
+//        }
+        return registrationController.register(login, psw);
     }
 }

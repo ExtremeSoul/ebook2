@@ -8,9 +8,6 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class UserStorage {
-    public UserWriter userWriter() {
-        return userWriter;
-    }
 
     private UserWriter userWriter;
     HashMap<String, User> userDataStorage = new HashMap<>();
@@ -27,8 +24,8 @@ public class UserStorage {
             String password = null;
             String line = scanner.nextLine();
             String[] parts = line.split(";");
-            parts[0] = name;
-            parts[1] = password;
+            name = parts[0];
+            password = parts[1];
             User user = new User(name, password);
             userDataStorage.put(user.getLogin(), user);
         }

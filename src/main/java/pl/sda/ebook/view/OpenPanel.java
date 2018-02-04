@@ -31,6 +31,7 @@ public class OpenPanel {
                 case 1:
                     logIn.logIn();
                     showMessagesPanel();
+
                     break;
                 case 2:
                     signIn.signIn();

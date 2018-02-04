@@ -30,9 +30,9 @@ public class LoginControllerTest {
     @Test
     public void shouldLogInUserWhenLoginAndPswIsCorrect() throws UserAlreadyExistExceptions, IOException {
 
-        userStorage.add(new User(VALID_LOGIN, "123456"));
+        userStorage.add(new User("Anka", "123456"));
         userStorage.downloadUsersDatabase();
-        Response result = new LoginController(userStorage).loginValiddation(VALID_LOGIN, "123456");
+        Response result = new LoginController(userStorage).loginValiddation("Anka", "123456");
         assertTrue(result.isSuccess());
     }
 
