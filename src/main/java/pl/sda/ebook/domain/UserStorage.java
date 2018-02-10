@@ -1,7 +1,5 @@
 package pl.sda.ebook.domain;
 
-import pl.sda.ebook.exception.UserAlreadyExistExceptions;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
@@ -33,7 +31,7 @@ public class UserStorage {
 
 
     public void add(User user) throws UserAlreadyExistExceptions, IOException {
-        if (loginPresent(user.getLogin())) throw new UserAlreadyExistExceptions("User already exist in storage");
+        if (loginPresent(user.getLogin())) throw new UserAlreadyExistExceptions(user);
         else {
             userWriter.addUser(user.getLogin(), user.getPsw());
         }

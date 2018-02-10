@@ -3,11 +3,11 @@ package pl.sda.ebook.view;
 import java.util.Scanner;
 
 
-public class ClisystemInterface implements CliInterface {
+public class CLSystemInterface implements SystemInterface {
 
     private Scanner scanner;
 
-    public ClisystemInterface(Scanner scanner) {
+    public CLSystemInterface(Scanner scanner) {
         this.scanner = scanner;
     }
 

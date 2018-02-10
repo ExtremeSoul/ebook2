@@ -1,18 +1,16 @@
 package pl.sda.ebook.registration;
 
-import pl.sda.ebook.exception.UserAlreadyExistExceptions;
+import pl.sda.ebook.domain.UserAlreadyExistExceptions;
 import pl.sda.ebook.communication.Response;
-import pl.sda.ebook.view.CliInterface;
-
+import pl.sda.ebook.view.SystemInterface;
 import java.io.IOException;
-import java.util.Scanner;
 
-public class SignIn {
+public class RegistrationView {
 
     private RegistrationController registrationController;
-    private final CliInterface systemInterface;
+    private final SystemInterface systemInterface;
 
-    public SignIn(RegistrationController registrationController, CliInterface systemInterface) {
+    public RegistrationView(RegistrationController registrationController, SystemInterface systemInterface) {
         this.registrationController = registrationController;
         this.systemInterface = systemInterface;
     }

@@ -6,7 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class BooksWriter {
-    public BooksWriter() throws IOException {
+    public BooksWriter() {
     }
 
     public File getBooksDatabse() {
@@ -14,7 +14,6 @@ public class BooksWriter {
     }
 
     private File booksDatabse = new File("C:\\Users\\Dell\\Desktop\\InScholProject\\Kamil\\ebook2\\BooksDatabase.txt");
-
 
     public void addBookToStorage(Book book) throws IOException {
         FileWriter fw = new FileWriter(booksDatabse, true);

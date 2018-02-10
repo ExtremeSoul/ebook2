@@ -2,18 +2,18 @@ package pl.sda.ebook.view;
 
 import pl.sda.ebook.domain.UserWriter;
 import pl.sda.ebook.domain.UserStorage;
-import pl.sda.ebook.exception.UserAlreadyExistExceptions;
-import pl.sda.ebook.login.LogIn;
+import pl.sda.ebook.domain.UserAlreadyExistExceptions;
+import pl.sda.ebook.login.LogInView;
 import pl.sda.ebook.login.LoginController;
 import pl.sda.ebook.products.BooksStorage;
 import pl.sda.ebook.products.BooksWriter;
 import pl.sda.ebook.registration.RegistrationController;
-import pl.sda.ebook.registration.SignIn;
+import pl.sda.ebook.registration.RegistrationView;
 
 import java.io.IOException;
 import java.util.Scanner;
 
-public class Main {
+public class MainMenu {
 
     public static void main(String[] args) throws UserAlreadyExistExceptions, IOException {
         Scanner scanner = new Scanner(System.in);
@@ -27,10 +27,10 @@ public class Main {
         booksStorage.downloadBooksDatabase();
 
 
-        SignIn signIn = new SignIn(registrationController, new ClisystemInterface(scanner));
-        LogIn logIn = new LogIn(scanner, loginController, new ClisystemInterface(scanner));
+        RegistrationView registrationView = new RegistrationView(registrationController, new CLSystemInterface(scanner));
+        LogInView logInView = new LogInView(scanner, loginController, new CLSystemInterface(scanner));
 
-        OpenPanel startOpenPanel = new OpenPanel(signIn, logIn, scanner);
+        OpenPanel startOpenPanel = new OpenPanel(registrationView, logInView, scanner);
         startOpenPanel.openPanel();
         LoggedInMenu loggedInMenu = new LoggedInMenu(scanner);
         loggedInMenu.chooseActionAfterLoggingIn();

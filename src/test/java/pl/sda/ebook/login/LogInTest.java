@@ -5,7 +5,7 @@ import org.mockito.BDDMockito;
 import pl.sda.ebook.communication.Response;
 import pl.sda.ebook.domain.User;
 import pl.sda.ebook.registration.RegistrationController;
-import pl.sda.ebook.view.CliInterface;
+
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;

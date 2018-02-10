@@ -1,12 +1,7 @@
 package pl.sda.ebook.view;
 
-public class SystemInterface implements CliInterface {
-    public String readInformation() {
-        String recivedInformation = null;
-        return recivedInformation;
-    }
+public interface SystemInterface {
+    void display(String message);
 
-    public void display(String message) {
-        System.out.println(message);
-    }
+    String read();
 }

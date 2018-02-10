@@ -1,7 +1,8 @@
 package pl.sda.ebook.view;
 
-import pl.sda.ebook.exception.UserAlreadyExistExceptions;
-import pl.sda.ebook.login.LogIn;
+import pl.sda.ebook.domain.UserAlreadyExistExceptions;
+import pl.sda.ebook.login.LogInView;
+import pl.sda.ebook.registration.RegistrationView;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -9,12 +10,12 @@ import java.util.Scanner;
 public class OpenPanel {
 
     private RegistrationView registrationView;
-    private LogIn logIn;
+    private LogInView logInView;
     private Scanner scanner;
 
-    public OpenPanel(RegistrationView registrationView, LogIn logIn, Scanner scanner) {
+    public OpenPanel(RegistrationView registrationView, LogInView logInView, Scanner scanner) {
         this.registrationView = registrationView;
-        this.logIn = logIn;
+        this.logInView = logInView;
         this.scanner = scanner;
     }
 
@@ -28,7 +29,7 @@ public class OpenPanel {
         while (isWorking) {
             switch (Integer.valueOf(scanner.nextLine())) {
                 case 1:
-                    logIn.logIn();
+                    logInView.logIn();
                     showMessagesPanel();
 
                     break;

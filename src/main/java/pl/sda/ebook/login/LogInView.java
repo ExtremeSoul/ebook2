@@ -1,18 +1,17 @@
 package pl.sda.ebook.login;
 
 import pl.sda.ebook.communication.Response;
-import pl.sda.ebook.view.CliInterface;
-
+import pl.sda.ebook.view.SystemInterface;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class LogIn {
+public class LogInView {
 
     private Scanner scanner;
     private LoginController loginController;
-    private final CliInterface systemInterface;
+    private final SystemInterface systemInterface;
 
-    public LogIn(Scanner scanner, LoginController loginController, CliInterface systemInterface) {
+    public LogInView(Scanner scanner, LoginController loginController, SystemInterface systemInterface) {
         this.scanner = scanner;
         this.loginController = loginController;
         this.systemInterface = systemInterface;

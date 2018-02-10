@@ -10,8 +10,6 @@ public class UserWriter {
 
     private File userDatabase = new File("C:\\Users\\Dell\\Desktop\\InScholProject\\Kamil\\ebook2\\UsersDatabase.txt");
 
-
-
     public boolean containsUsername(String userName) throws FileNotFoundException {
         Scanner scanner = new Scanner(userDatabase);
         boolean contains = false;

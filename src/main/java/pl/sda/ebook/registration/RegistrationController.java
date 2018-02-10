@@ -3,7 +3,7 @@ package pl.sda.ebook.registration;
 import pl.sda.ebook.communication.Response;
 import pl.sda.ebook.domain.User;
 import pl.sda.ebook.domain.UserStorage;
-import pl.sda.ebook.exception.UserAlreadyExistExceptions;
+import pl.sda.ebook.domain.UserAlreadyExistExceptions;
 
 import java.io.IOException;
 
