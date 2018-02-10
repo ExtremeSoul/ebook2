@@ -7,7 +7,7 @@ import pl.sda.ebook.communication.Response;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class RegistrationView extends SystemInterface {
+public class RegistrationView implements CliInterface {
 
     private Scanner scanner;
     private RegistrationController registrationController;
