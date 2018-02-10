@@ -1,6 +1,6 @@
 package pl.sda.ebook.products;
 
-public class Book  {
+public class Book {
     private String name;
     private String author;
     private String genre;
@@ -21,7 +21,6 @@ public class Book  {
     public int getYearOfPublishing() {
         return yearOfPublishing;
     }
-
 
 
     public Book(String name, String author, String genre, int yearOfPublishing) {

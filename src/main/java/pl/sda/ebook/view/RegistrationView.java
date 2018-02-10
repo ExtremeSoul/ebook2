@@ -11,28 +11,20 @@ public class RegistrationView implements CliInterface {
 
     private Scanner scanner;
     private RegistrationController registrationController;
-    private SystemInterface systemInterface;
+    private CommandLineUserInterface commandLineUserInterface;
 
-    public RegistrationView(Scanner scanner, RegistrationController registrationController, SystemInterface systemInterface) {
+    public RegistrationView(Scanner scanner, RegistrationController registrationController, CommandLineUserInterface commandLineUserInterface) {
         this.scanner = scanner;
         this.registrationController = registrationController;
-        this.systemInterface = systemInterface;
+        this.commandLineUserInterface = commandLineUserInterface;
     }
 
     public Response signIn() throws UserAlreadyExistExceptions, IOException {
 
-        systemInterface.display("Write login");
-        String login = systemInterface.readInformation();
-        systemInterface.display("Write password");
-        String psw = systemInterface.readInformation();
-
-
-//        Response response = registrationController.register(login, psw);
-//        if (response.isSuccess()) {
-//            System.out.println("Success!");
-//        } else {
-//            System.out.println(response.getMessage());
-//        }
+        commandLineUserInterface.display("Write login");
+        String login = commandLineUserInterface.readInformation();
+        commandLineUserInterface.display("Write password");
+        String psw = commandLineUserInterface.readInformation();
         return registrationController.register(login, psw);
     }
 }

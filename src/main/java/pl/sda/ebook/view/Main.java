@@ -26,7 +26,7 @@ public class Main {
 
     public static void main(String[] args) throws UserAlreadyExistExceptions, IOException {
         Scanner scanner = new Scanner(System.in);
-        SystemInterface systemInterface = new SystemInterface();
+        CommandLineUserInterface commandLineUserInterface = new CommandLineUserInterface(scanner);
         UserWriter userWriter = new UserWriter();
         UserStorage userStorage = new UserStorage(userWriter);
         userStorage.downloadUsersDatabase();
@@ -69,7 +69,7 @@ public class Main {
                     break;
                 }
                 case SIGNING_IN: {
-                    state = signingIn(scanner, registrationController, systemInterface);
+                    state = signingIn(scanner, registrationController, commandLineUserInterface);
                     break;
                 }
                 case LOGGING_IN: {
@@ -83,9 +83,9 @@ public class Main {
         }
     }
 
-    private static State signingIn(Scanner scanner, RegistrationController registrationController,  SystemInterface systemInterface) throws IOException,
+    private static State signingIn(Scanner scanner, RegistrationController registrationController, CommandLineUserInterface commandLineUserInterface) throws IOException,
             UserAlreadyExistExceptions {
-        RegistrationView registrationView = new RegistrationView(scanner, registrationController, systemInterface);
+        RegistrationView registrationView = new RegistrationView(scanner, registrationController, commandLineUserInterface);
         Response response = registrationView.signIn();
 
         if (response.isSuccess()) {

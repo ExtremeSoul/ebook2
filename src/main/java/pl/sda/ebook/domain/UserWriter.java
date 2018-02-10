@@ -11,7 +11,6 @@ public class UserWriter {
     private File userDatabase = new File("C:\\Users\\jakub\\Desktop\\Code\\UsersDatabase.txt");
 
 
-
     public boolean containsUsername(String userName) throws FileNotFoundException {
         Scanner scanner = new Scanner(userDatabase);
         boolean contains = false;
@@ -21,7 +20,8 @@ public class UserWriter {
             if (parts[0].contains(userName)) {
                 contains = true;
             }
-        }return contains;
+        }
+        return contains;
     }
 
     public void addUser(String username, String pswd) throws IOException {
@@ -38,10 +38,11 @@ public class UserWriter {
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();
 
-            if (line.contains(login+";"+password)) {
+            if (line.contains(login + ";" + password)) {
                 contains = true;
             }
-        }return contains;
+        }
+        return contains;
     }
 
 }
