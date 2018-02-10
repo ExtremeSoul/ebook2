@@ -13,10 +13,10 @@ public class BooksWriter {
         return booksDatabse;
     }
 
-    private File booksDatabse = new File("C:\\Users\\jakub\\Desktop\\Code\\BooksDatabase.txt");
+    private File booksDatabse = new File("C:\\Users\\Dell\\Desktop\\InScholProject\\Kamil\\ebook2\\BooksDatabase.txt");
 
 
-    public void addBooktoStorage(Book book) throws IOException {
+    public void addBookToStorage(Book book) throws IOException {
         FileWriter fw = new FileWriter(booksDatabse, true);
         BufferedWriter bw = new BufferedWriter(fw);
         bw.write(book.getName()+";"+book.getAuthor()+";"+book.getGenre()+";"+book.getYearOfPublishing());
