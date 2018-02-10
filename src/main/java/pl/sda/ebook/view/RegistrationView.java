@@ -1,4 +1,4 @@
-package pl.sda.ebook.registration;
+package pl.sda.ebook.view;
 
 import pl.sda.ebook.exception.UserAlreadyExistExceptions;
 import pl.sda.ebook.registration.RegistrationController;
@@ -7,22 +7,24 @@ import pl.sda.ebook.communication.Response;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class SignIn {
+public class RegistrationView extends SystemInterface {
 
     private Scanner scanner;
     private RegistrationController registrationController;
+    private SystemInterface systemInterface;
 
-    public SignIn(Scanner scanner, RegistrationController registrationController) {
+    public RegistrationView(Scanner scanner, RegistrationController registrationController, SystemInterface systemInterface) {
         this.scanner = scanner;
         this.registrationController = registrationController;
+        this.systemInterface = systemInterface;
     }
 
     public Response signIn() throws UserAlreadyExistExceptions, IOException {
 
-        System.out.println("Enter your login:");
-        String login = scanner.nextLine();
-        System.out.println("Enter your password:");
-        String psw = scanner.nextLine();
+        systemInterface.display("Write login");
+        String login = systemInterface.readInformation();
+        systemInterface.display("Write password");
+        String psw = systemInterface.readInformation();
 
 
 //        Response response = registrationController.register(login, psw);

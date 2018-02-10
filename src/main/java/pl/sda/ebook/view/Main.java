@@ -10,7 +10,6 @@ import pl.sda.ebook.products.Book;
 import pl.sda.ebook.products.BooksStorage;
 import pl.sda.ebook.products.BooksWriter;
 import pl.sda.ebook.registration.RegistrationController;
-import pl.sda.ebook.registration.SignIn;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -27,6 +26,7 @@ public class Main {
 
     public static void main(String[] args) throws UserAlreadyExistExceptions, IOException {
         Scanner scanner = new Scanner(System.in);
+        SystemInterface systemInterface = new SystemInterface();
         UserWriter userWriter = new UserWriter();
         UserStorage userStorage = new UserStorage(userWriter);
         userStorage.downloadUsersDatabase();
@@ -69,7 +69,7 @@ public class Main {
                     break;
                 }
                 case SIGNING_IN: {
-                    state = signingIn(scanner, registrationController);
+                    state = signingIn(scanner, registrationController, systemInterface);
                     break;
                 }
                 case LOGGING_IN: {
@@ -83,9 +83,10 @@ public class Main {
         }
     }
 
-    private static State signingIn(Scanner scanner, RegistrationController registrationController) throws IOException, UserAlreadyExistExceptions {
-        SignIn signIn = new SignIn(scanner, registrationController);
-        Response response = signIn.signIn();
+    private static State signingIn(Scanner scanner, RegistrationController registrationController,  SystemInterface systemInterface) throws IOException,
+            UserAlreadyExistExceptions {
+        RegistrationView registrationView = new RegistrationView(scanner, registrationController, systemInterface);
+        Response response = registrationView.signIn();
 
         if (response.isSuccess()) {
             System.out.println("Success!");
