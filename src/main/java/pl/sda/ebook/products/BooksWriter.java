@@ -13,7 +13,7 @@ public class BooksWriter {
         return booksDatabse;
     }
 
-    private File booksDatabse = new File("C:\\Users\\jakub\\Desktop\\Code\\BooksDatabase.txt");
+    private File booksDatabse = new File("C:\\Users\\Dell\\Desktop\\InScholProject\\Kamil\\ebook2\\BooksDatabase.txt");
 
 
     public void addBookToStorage(Book book) throws IOException {

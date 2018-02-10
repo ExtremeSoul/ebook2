@@ -27,8 +27,8 @@ public class Main {
         booksStorage.downloadBooksDatabase();
 
 
-        SignIn signIn = new SignIn(scanner, registrationController);
-        LogIn logIn = new LogIn(scanner, loginController);
+        SignIn signIn = new SignIn(registrationController, new ClisystemInterface(scanner));
+        LogIn logIn = new LogIn(scanner, loginController, new ClisystemInterface(scanner));
 
         OpenPanel startOpenPanel = new OpenPanel(signIn, logIn, scanner);
         startOpenPanel.openPanel();
