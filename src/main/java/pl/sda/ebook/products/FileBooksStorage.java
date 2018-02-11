@@ -5,13 +5,13 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Scanner;
 
-public class BooksStorage {
+public class FileBooksStorage {
 
     HashMap<String, Book> booksTotalStorage = new HashMap<>();
 
     private BooksWriter booksWriter;
 
-    public BooksStorage(BooksWriter booksWriter) {
+    public FileBooksStorage(BooksWriter booksWriter) {
         this.booksWriter = booksWriter;
     }
 

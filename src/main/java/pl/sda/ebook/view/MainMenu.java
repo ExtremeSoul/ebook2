@@ -3,7 +3,7 @@ package pl.sda.ebook.view;
 import pl.sda.ebook.domain.*;
 import pl.sda.ebook.login.LogInView;
 import pl.sda.ebook.login.LoginController;
-import pl.sda.ebook.products.BooksStorage;
+import pl.sda.ebook.products.FileBooksStorage;
 import pl.sda.ebook.products.BooksWriter;
 import pl.sda.ebook.registration.RegistrationController;
 import pl.sda.ebook.registration.RegistrationView;
@@ -21,9 +21,9 @@ public class MainMenu {
         RegistrationController registrationController = new RegistrationController(userStorage);
         LoginController loginController = new LoginController(userStorage);
         BooksWriter booksWriter = new BooksWriter();
-        BooksStorage booksStorage = new BooksStorage(booksWriter);
+        FileBooksStorage fileBooksStorage = new FileBooksStorage(booksWriter);
         try {
-            booksStorage.downloadBooksDatabase();
+            fileBooksStorage.downloadBooksDatabase();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
