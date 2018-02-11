@@ -7,7 +7,6 @@ import pl.sda.ebook.products.BooksStorage;
 import pl.sda.ebook.products.BooksWriter;
 import pl.sda.ebook.registration.RegistrationController;
 import pl.sda.ebook.registration.RegistrationView;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
