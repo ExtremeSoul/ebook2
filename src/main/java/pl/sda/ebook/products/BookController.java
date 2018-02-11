@@ -11,8 +11,19 @@ public class BookController {
         this.booksStorage = booksStorage;
     }
 
-    public Response addBook(String title, String author) {
-        booksStorage.addBook(title, author);
+    public Response addBook(String title, String author, String isbn) {
+        booksStorage.addBook(title, author, isbn);
         return new Response(true);
+    }
+
+    public Response getInformationAbout(String isbn) {
+        Response response = Response.aSuccessfuleResponse();
+        Book book = booksStorage.searchBy(isbn);
+        response.setMessage("{" +
+                "title:" + book.getTitle() + "," +
+                "author:" + book.getAuthor() + "," +
+                "isbn:" + isbn + "," +
+                "}");
+        return response;
     }
 }

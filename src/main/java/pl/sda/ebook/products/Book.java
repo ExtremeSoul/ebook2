@@ -3,8 +3,17 @@ package pl.sda.ebook.products;
 public class Book  {
     private String name;
     private String author;
+    private String isbn;
     private String genre;
     private int yearOfPublishing;
+    private String title;
+
+    public Book(String title, String author, String isbn) {
+
+        this.title = title;
+        this.author = author;
+        this.isbn = isbn;
+    }
 
     public String getName() {
         return name;
@@ -29,5 +38,9 @@ public class Book  {
         this.author = author;
         this.genre = genre;
         this.yearOfPublishing = yearOfPublishing;
+    }
+
+    public String getTitle() {
+        return title;
     }
 }

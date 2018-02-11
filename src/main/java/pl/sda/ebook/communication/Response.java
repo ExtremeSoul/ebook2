@@ -18,7 +18,16 @@ public class Response {
         return isSuccess;
     }
 
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
     public String getMessage() {
         return message;
+
+    }
+
+    public static Response aSuccessfuleResponse() {
+        return new Response(true);
     }
 }
