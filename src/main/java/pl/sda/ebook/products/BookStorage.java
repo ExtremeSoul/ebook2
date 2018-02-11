@@ -1,8 +1,9 @@
 package pl.sda.ebook.products;
 
 public interface BookStorage {
-    void add(String title, String author);
+    void add(String title, String author, String isbn);
 
-    boolean isBookAlreadyExist(String title, String author);
+    boolean isBookAlreadyExist(String isbn);
 
+    Book searchBy(String isbn);
 }

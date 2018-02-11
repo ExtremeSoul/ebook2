@@ -9,11 +9,19 @@ public class BookController {
         this.bookStorage = bookStorage;
     }
 
-    public Response addBook(String title, String author) {
-        if(bookStorage.isBookAlreadyExist(title, author)) {
+    public Response addBook(String title, String author, String isbn) {
+        if(bookStorage.isBookAlreadyExist(isbn)) {
             return new Response(false, "Book already exist.");
         }
-        bookStorage.add(title, author);
+        bookStorage.add(title, author, isbn);
         return new Response(true);
+    }
+
+    public Response getInformationAbout(String isbn) {
+        if(bookStorage.isBookAlreadyExist(isbn)) {
+            Book book = bookStorage.searchBy(isbn);
+            return new Response(true, book.toJSON());
+        }
+        return new Response(false, "Book already exist.");
     }
 }

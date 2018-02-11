@@ -20,17 +20,15 @@ public class FileBooksStorage {
         while (scanner.hasNextLine()) {
             String name = null;
             String author = null;
-            String genre = null;
+            String isbn = null;
             String yearOfPublishing = null;
             String line = scanner.nextLine();
             String[] parts = line.split(";");
             parts[0] = name;
             parts[1] = author;
-            parts[2] = genre;
-            parts[3] = yearOfPublishing;
+            parts[2] = isbn;
             int year = Integer.parseInt(yearOfPublishing);
-            Book book = new Book(name, author, genre,year );
-            booksTotalStorage.put(book.getName(),book);
+            Book book = new Book(name, author, isbn);
         }
     }
 

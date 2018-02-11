@@ -18,7 +18,7 @@ public class BooksWriter {
     public void addBookToStorage(Book book) throws IOException {
         FileWriter fw = new FileWriter(booksDatabse, true);
         BufferedWriter bw = new BufferedWriter(fw);
-        bw.write(book.getName()+";"+book.getAuthor()+";"+book.getGenre()+";"+book.getYearOfPublishing());
+        bw.write(book.toJSON());
         bw.newLine();
         bw.close();
     }
