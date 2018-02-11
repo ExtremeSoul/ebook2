@@ -3,10 +3,7 @@ package pl.sda.ebook.login;
 import org.junit.Before;
 import org.junit.Test;
 import pl.sda.ebook.communication.Response;
-import pl.sda.ebook.domain.User;
-import pl.sda.ebook.domain.UserStorage;
-import pl.sda.ebook.domain.UserWriter;
-import pl.sda.ebook.domain.UserAlreadyExistExceptions;
+import pl.sda.ebook.domain.*;
 
 import java.io.IOException;
 
@@ -23,7 +20,7 @@ public class LoginControllerTest {
     @Before
     public void setUp() {
         userWriter = new UserWriter();
-        userStorage = new UserStorage(userWriter);
+        userStorage = new FileUserStorage(userWriter);
         loginController = new LoginController(userStorage);
     }
 

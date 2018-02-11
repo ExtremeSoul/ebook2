@@ -3,10 +3,7 @@ package pl.sda.ebook.registration;
 import org.junit.Before;
 import org.junit.Test;
 import pl.sda.ebook.communication.Response;
-import pl.sda.ebook.domain.User;
-import pl.sda.ebook.domain.UserStorage;
-import pl.sda.ebook.domain.UserWriter;
-import pl.sda.ebook.domain.UserAlreadyExistExceptions;
+import pl.sda.ebook.domain.*;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -25,7 +22,7 @@ public class RegistrationControllerTest {
     @Before
     public void setUp() throws FileNotFoundException {
         userWriter = new UserWriter();
-        userStorage = new UserStorage(userWriter);
+        userStorage = new FileUserStorage(userWriter);
         userStorage.downloadUsersDatabase();
         registrationController = new RegistrationController(userStorage);
     }
