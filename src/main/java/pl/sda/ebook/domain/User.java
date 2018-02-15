@@ -13,11 +13,9 @@ public class User {
     public String getLogin() {
         return login;
     }
+
     public String getPassword() {
         return password;
     }
 
-    public boolean hasTheSamePasswordAs(String password) {
-        return this.password.equals(password);
-    }
 }

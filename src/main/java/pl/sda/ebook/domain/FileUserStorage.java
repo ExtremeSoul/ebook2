@@ -8,7 +8,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Scanner;
 
 public class FileUserStorage implements UserStorage {
 
@@ -57,11 +56,16 @@ public class FileUserStorage implements UserStorage {
     }
 
     @Override
-    public boolean passwordPresent(String login, String password) throws FileNotFoundException {
+    public boolean exist(String login, String password){
 //        if (loginPresent(login)) {
 //            return userDataStorage.get(login).hasTheSamePasswordAs(password);
 //        } else return false;
-        return userWriter.containsBothUsernameAndPassword(login, password);
+        return true;
+    }
+
+    @Override
+    public boolean exist(String login) {
+        return false;
     }
 }
 

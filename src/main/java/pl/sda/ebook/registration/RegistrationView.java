@@ -16,17 +16,17 @@ public class RegistrationView {
     }
 
     public void signIn() throws UserAlreadyExistExceptions, IOException {
-
         systemInterface.display("Enter your login:");
         String login = systemInterface.read();
         systemInterface.display("Enter your password:");
-        String psw = systemInterface.read();
+        String password = systemInterface.read();
 
-        Response response = registrationController.register(login, psw);
+        Response response = registrationController.register(login, password);
 
         if (response.isSuccess()) {
-            systemInterface.display("Success!");
+            systemInterface.display("Success! You are registered");
         } else {
+            systemInterface.display("Something went wrong");
             systemInterface.display(response.getMessage());
         }
     }

@@ -22,7 +22,7 @@ public class MainMenu {
         FileBooksStorage fileBooksStorage = new FileBooksStorage("/Users/Maluch/Documents/Prywatne/Programowanie/Git/ebook2/src/main/resources/BookDatabase.json");
 
         RegistrationView registrationView = new RegistrationView(registrationController, new CLSystemInterface(scanner));
-        LogInView logInView = new LogInView(scanner, loginController, new CLSystemInterface(scanner));
+        LogInView logInView = new LogInView(loginController, new CLSystemInterface(scanner));
 
         OpenPanel startOpenPanel = new OpenPanel(registrationView, logInView, scanner);
         try {

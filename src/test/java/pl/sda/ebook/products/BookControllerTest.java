@@ -61,6 +61,7 @@ public class BookControllerTest {
     @Test
     public void shouldDeleteBookWhenBookAlreadyExist() {
         BDDMockito.given(this.bookStorage.isBookAlreadyExist(ISBN)).willReturn(true);
+
         Response response = this.bookController.deleteBook(ISBN);
 
         assertTrue(response.isSuccess());

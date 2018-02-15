@@ -5,10 +5,10 @@ import org.mockito.BDDMockito;
 import org.mockito.Mockito;
 import pl.sda.ebook.communication.Response;
 import pl.sda.ebook.view.CLSystemInterface;
-
 import static org.mockito.Mockito.mock;
 
 public class RegistrationViewTest {
+
     private final String SOME_PASSWORD = "login";
     private final String SOME_LOGIN = "password";
 
@@ -25,7 +25,7 @@ public class RegistrationViewTest {
 
         signIn.signIn();
 
-        Mockito.verify(CLSystemInterface).display("Success!");
+        Mockito.verify(CLSystemInterface).display("Success! You are registered");
     }
 
     @Test

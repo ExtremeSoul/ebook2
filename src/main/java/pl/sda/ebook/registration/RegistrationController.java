@@ -8,22 +8,23 @@ import pl.sda.ebook.domain.UserAlreadyExistExceptions;
 import java.io.IOException;
 
 public class RegistrationController {
+    public static final int PASSWORD_LENGTH = 6;
     private UserStorage userStorage;
 
     public RegistrationController(UserStorage userStorage) {
         this.userStorage = userStorage;
     }
 
-    public Response register(String username, String pswd) throws UserAlreadyExistExceptions, IOException {
-
-        if (pswd.length() < 6) {
+    public Response register(String username, String password) throws UserAlreadyExistExceptions, IOException {
+        if (isTooShort(password)) {
             return new Response(false, "Password is too short");
-        } else if (userStorage.loginPresent(username)) {
+        } else if (userStorage.exist(username, password)) {
             return new Response(false, "User already exists");
-        } else userStorage.add(new User(username, pswd));
-
-
-
+        } else userStorage.add(new User(username, password));
         return new Response(true);
+    }
+
+    private boolean isTooShort(String password) {
+        return password.length() < PASSWORD_LENGTH;
     }
 }

@@ -10,5 +10,7 @@ public interface UserStorage {
 
     boolean loginPresent(String username) throws FileNotFoundException;
 
-    boolean passwordPresent(String login, String password) throws FileNotFoundException;
+    boolean exist(String login, String password);
+
+    boolean exist(String login);
 }

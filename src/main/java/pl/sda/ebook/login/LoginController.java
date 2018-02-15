@@ -7,18 +7,16 @@ import java.io.FileNotFoundException;
 
 public class LoginController {
 
-
     private UserStorage userStorage;
-
 
     public LoginController(UserStorage userStorage) {
         this.userStorage = userStorage;
     }
 
     public Response loginValiddation(String username, String pswd) throws FileNotFoundException {
-
-        if (!(userStorage.passwordPresent(username, pswd))) {
-            return new Response(false, "Password is not correct");
-        } else return new Response(true);
+        if ((userStorage.exist(username, pswd))) {
+            return new Response(true);
+        }
+        return new Response(false, "Login or password isn't correct");
     }
 }
