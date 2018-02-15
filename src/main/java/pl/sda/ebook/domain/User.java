@@ -3,21 +3,21 @@ package pl.sda.ebook.domain;
 public class User {
 
     private String login;
-    private String psw;
+    private String password;
 
-    public User(String login, String psw) {
+    public User(String login, String password) {
         this.login = login;
-        this.psw = psw;
+        this.password = password;
     }
 
     public String getLogin() {
         return login;
     }
-    public String getPsw() {
-        return psw;
+    public String getPassword() {
+        return password;
     }
 
     public boolean hasTheSamePasswordAs(String password) {
-        return this.psw.equals(password);
+        return this.password.equals(password);
     }
 }

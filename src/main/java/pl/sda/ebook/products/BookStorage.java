@@ -6,4 +6,7 @@ public interface BookStorage {
     boolean isBookAlreadyExist(String isbn);
 
     Book searchBy(String isbn);
+
+    void delete(String isbn);
+
 }

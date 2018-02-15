@@ -8,7 +8,7 @@ public class UserWriter {
         return userDatabase;
     }
 
-    private File userDatabase = new File("C:\\Users\\Dell\\Desktop\\InScholProject\\Kamil\\ebook2\\UsersDatabase.txt");
+    private File userDatabase = new File("/Users/Maluch/Downloads/PeopleDatabase.json");
 
     public boolean containsUsername(String userName) throws FileNotFoundException {
         Scanner scanner = new Scanner(userDatabase);

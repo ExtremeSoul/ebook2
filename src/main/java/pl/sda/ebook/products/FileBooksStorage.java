@@ -1,48 +1,61 @@
 package pl.sda.ebook.products;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.io.*;
 
-public class FileBooksStorage {
+public class FileBooksStorage implements BookStorage {
 
-    HashMap<String, Book> booksTotalStorage = new HashMap<>();
+    private String pathFileName;
 
-    private BooksWriter booksWriter;
-
-    public FileBooksStorage(BooksWriter booksWriter) {
-        this.booksWriter = booksWriter;
+    public FileBooksStorage(String pathFileName) {
+        this.pathFileName = pathFileName;
     }
 
-    public void downloadBooksDatabase() throws FileNotFoundException {
-        Scanner scanner = new Scanner(booksWriter.getBooksDatabse());
-        while (scanner.hasNextLine()) {
-            String name = null;
-            String author = null;
-            String isbn = null;
-            String yearOfPublishing = null;
-            String line = scanner.nextLine();
-            String[] parts = line.split(";");
-            parts[0] = name;
-            parts[1] = author;
-            parts[2] = isbn;
-            int year = Integer.parseInt(yearOfPublishing);
-            Book book = new Book(name, author, isbn);
+    @Override
+    public boolean isBookAlreadyExist(String isbn) {
+        return false;
+    }
+
+    @Override
+    public void add(String title, String author, String isbn) {
+        Book book = new Book(title, author, isbn);
+
+        FileWriter fileWriter = null;
+        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+        try {
+            fileWriter = new FileWriter(new File(pathFileName), true);
+            bufferedWriter.write(book.toJSON());
+            bufferedWriter.newLine();
+            bufferedWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
-
-    public void addBookToStorage(Book book) throws IOException {
-//        booksTotalStorage.put(book.getName(), book);
-        booksWriter.addBookToStorage(book);
+    @Override
+    public Book searchBy(String isbn) {
+        return null;
     }
 
-    public void showListOfBooksAndAuthors(){
-        String bookTitleList = null;
-        if(bookTitleList != null){
-        System.out.println(bookTitleList);}
-        else System.out.println("Niestety, ale nie mamy żadnych książek");
+    @Override
+    public void delete(String isbn) {
+
     }
+
+
+    //    public void downloadBooksDatabase() {
+//        Scanner scanner = new Scanner(booksWriter.getBooksDatabse());
+//        while (scanner.hasNextLine()) {
+//            String name = null;
+//            String author = null;
+//            String isbn = null;
+//            String line = scanner.nextLine();
+//            String[] parts = line.split(";");
+//            parts[0] = name;
+//            parts[1] = author;
+//            parts[2] = isbn;
+//            int year = Integer.parseInt(yearOfPublishing);
+//            Book book = new Book(name, author, isbn);
+//        }
+//    }
 
 }

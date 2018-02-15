@@ -1,6 +1,11 @@
 package pl.sda.ebook.domain;
 
+import org.json.simple.JSONArray;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.JSONObject;
+
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -17,24 +22,31 @@ public class FileUserStorage implements UserStorage {
 
     @Override
     public void downloadUsersDatabase() throws FileNotFoundException {
-        Scanner scanner = new Scanner(userWriter.getUserDatabase());
-        while (scanner.hasNextLine()) {
-            String name = null;
-            String password = null;
-            String line = scanner.nextLine();
-            String[] parts = line.split(";");
-            name = parts[0];
-            password = parts[1];
-            User user = new User(name, password);
-            userDataStorage.put(user.getLogin(), user);
+
+        JSONParser parser = new JSONParser();
+
+        try {
+            Object object = parser.parse(new FileReader("/Users/Maluch/Documents/Prywatne/Programowanie/Git/ebook2/src/main/resources/PeopleDatabase.json"));
+
+            JSONArray jsonArray = (JSONArray) object;
+            JSONObject jsonObject = (JSONObject) jsonArray.get(0);
+
+            String login = (String) jsonObject.get("login");
+            String password = (String) jsonObject.get("password");
+
+        } catch (FileNotFoundException fe) {
+            fe.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+
     }
 
     @Override
     public void add(User user) throws UserAlreadyExistExceptions, IOException {
         if (loginPresent(user.getLogin())) throw new UserAlreadyExistExceptions(user);
         else {
-            userWriter.addUser(user.getLogin(), user.getPsw());
+            userWriter.addUser(user.getLogin(), user.getPassword());
         }
     }
 
@@ -52,4 +64,8 @@ public class FileUserStorage implements UserStorage {
         return userWriter.containsBothUsernameAndPassword(login, password);
     }
 }
+
+
+
+
 

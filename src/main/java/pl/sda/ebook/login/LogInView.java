@@ -27,7 +27,6 @@ public class LogInView {
 
         if (response.isSuccess()) {
             systemInterface.display("Hello, " + login);
-
         } else {
             systemInterface.display(response.getMessage());
         }
