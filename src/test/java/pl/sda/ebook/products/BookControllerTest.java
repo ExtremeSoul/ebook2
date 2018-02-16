@@ -81,7 +81,7 @@ public class BookControllerTest {
     private String anExpectedInformation(String isbn, String title, String author) {
         return "{" + "isbn:" + isbn + "," +
                 "author:" + author + "," +
-                "title:" + title +  "}";
+                "title:" + title + "}";
     }
 
 }

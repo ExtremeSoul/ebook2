@@ -4,7 +4,9 @@ import org.junit.Test;
 import org.mockito.BDDMockito;
 import pl.sda.ebook.communication.Response;
 import pl.sda.ebook.domain.*;
+
 import java.io.IOException;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -24,7 +26,7 @@ public class RegistrationControllerTest {
         Response result = new RegistrationController(userStorage).register(VALID_LOGIN, PASSWORD);
 
         assertTrue(result.isSuccess());
-        verify(this.userStorage).exist(VALID_LOGIN, PASSWORD);
+        verify(this.userStorage).exist(VALID_LOGIN);
     }
 
     @Test
@@ -38,7 +40,7 @@ public class RegistrationControllerTest {
 
     @Test
     public void shouldRefuseToRegisterIfUserAlreadyExists() throws UserAlreadyExistExceptions, IOException {
-        BDDMockito.given(userStorage.exist(VALID_LOGIN, PASSWORD)).willReturn(true);
+        BDDMockito.given(userStorage.exist(VALID_LOGIN)).willReturn(true);
 
         Response result = new RegistrationController(userStorage).register(VALID_LOGIN, PASSWORD);
 

@@ -4,7 +4,9 @@ import org.junit.Test;
 import org.mockito.BDDMockito;
 import pl.sda.ebook.communication.Response;
 import pl.sda.ebook.domain.*;
+
 import java.io.IOException;
+
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 

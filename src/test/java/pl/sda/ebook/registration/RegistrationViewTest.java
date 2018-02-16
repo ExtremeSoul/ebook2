@@ -5,6 +5,7 @@ import org.mockito.BDDMockito;
 import org.mockito.Mockito;
 import pl.sda.ebook.communication.Response;
 import pl.sda.ebook.view.CLSystemInterface;
+
 import static org.mockito.Mockito.mock;
 
 public class RegistrationViewTest {
@@ -18,10 +19,8 @@ public class RegistrationViewTest {
 
     @Test
     public void shouldRegisterNewUser() throws Exception {
-
-        Response response = new Response(true);
         BDDMockito.given(CLSystemInterface.read()).willReturn(SOME_LOGIN, SOME_PASSWORD);
-        BDDMockito.given(registrationController.register(SOME_LOGIN, SOME_PASSWORD)).willReturn(response);
+        BDDMockito.given(registrationController.register(SOME_LOGIN, SOME_PASSWORD)).willReturn(new Response(true));
 
         signIn.signIn();
 
@@ -30,7 +29,6 @@ public class RegistrationViewTest {
 
     @Test
     public void shouldNotRegisterNewUserWhenUserAlreadyExist() throws Exception {
-
         String user_already_exists = "User already exists";
         Response response = new Response(false, user_already_exists);
         BDDMockito.given(CLSystemInterface.read()).willReturn(SOME_LOGIN, SOME_PASSWORD);

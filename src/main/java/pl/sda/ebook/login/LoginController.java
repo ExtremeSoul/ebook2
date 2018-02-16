@@ -13,7 +13,7 @@ public class LoginController {
         this.userStorage = userStorage;
     }
 
-    public Response loginValiddation(String username, String pswd) throws FileNotFoundException {
+    public Response loginValiddation(String username, String pswd) {
         if ((userStorage.exist(username, pswd))) {
             return new Response(true);
         }
