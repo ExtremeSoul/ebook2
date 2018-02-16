@@ -18,7 +18,7 @@ public class LoginControllerTest {
 
     @Test
     public void shouldLogInUserWhenLoginAndPswIsCorrect() throws UserAlreadyExistExceptions, IOException {
-        BDDMockito.given(userStorage.exist(LOGIN, PASSWORD)).willReturn(true);
+        BDDMockito.given(userStorage.existUser(LOGIN, PASSWORD)).willReturn(true);
 
         Response result = new LoginController(userStorage).loginValiddation(LOGIN, PASSWORD);
 
@@ -27,7 +27,7 @@ public class LoginControllerTest {
 
     @Test
     public void shouldNotLogInUserWhenLoginAndPswIsInCorrect() throws UserAlreadyExistExceptions, IOException {
-        BDDMockito.given(userStorage.exist(LOGIN, PASSWORD)).willReturn(true);
+        BDDMockito.given(userStorage.existUser(LOGIN, PASSWORD)).willReturn(true);
 
         Response result = new LoginController(userStorage).loginValiddation("kamil", "12345674");
 
@@ -37,7 +37,7 @@ public class LoginControllerTest {
 
     @Test
     public void shouldNotLogInUserWhenLoginIsCorrectAndPswIsInCorrect() throws UserAlreadyExistExceptions, IOException {
-        BDDMockito.given(userStorage.exist(LOGIN, PASSWORD)).willReturn(true);
+        BDDMockito.given(userStorage.existUser(LOGIN, PASSWORD)).willReturn(true);
 
         Response result = new LoginController(userStorage).loginValiddation(LOGIN, "12345674");
 

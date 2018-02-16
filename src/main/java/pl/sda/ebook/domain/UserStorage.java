@@ -1,16 +1,14 @@
 package pl.sda.ebook.domain;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.util.HashMap;
 
 public interface UserStorage {
-    void downloadUsersDatabase() throws FileNotFoundException;
+    void add(User user);
 
-    void add(User user) throws UserAlreadyExistExceptions, IOException;
+    boolean existUser(String login, String password);
 
-    boolean loginPresent(String username) throws FileNotFoundException;
+    boolean existLogin(String login);
 
-    boolean exist(String login, String password);
+    HashMap downloadUsersDatabase();
 
-    boolean exist(String login);
 }

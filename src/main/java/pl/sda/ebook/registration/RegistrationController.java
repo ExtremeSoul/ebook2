@@ -18,7 +18,7 @@ public class RegistrationController {
     public Response register(String username, String password) throws UserAlreadyExistExceptions, IOException {
         if (isTooShort(password)) {
             return new Response(false, "Password is too short");
-        } else if (userStorage.exist(username)) {
+        } else if (userStorage.existLogin(username)) {
             return new Response(false, "User already exists");
         } else userStorage.add(new User(username, password));
         return new Response(true);

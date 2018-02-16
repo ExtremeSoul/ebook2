@@ -16,7 +16,7 @@ public class MainMenu {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         UserStorageFactory userStorageFactory = new UserStorageFactory();
-        UserStorage userStorage = userStorageFactory.createFileUserStorage();
+        UserStorage userStorage = userStorageFactory.createJSONFileUserStorage();
         RegistrationController registrationController = new RegistrationController(userStorage);
         LoginController loginController = new LoginController(userStorage);
         FileBooksStorage fileBooksStorage = new FileBooksStorage("/Users/Maluch/Documents/Prywatne/Programowanie/Git/ebook2/src/main/resources/BookDatabase.json");
@@ -32,18 +32,5 @@ public class MainMenu {
         }
         LoggedInMenu loggedInMenu = new LoggedInMenu(scanner);
         loggedInMenu.chooseActionAfterLoggingIn();
-
-
-    }
-
-    private static UserStorage createUserStorage() {
-        UserWriter userWriter = new UserWriter();
-        UserStorage userStorage = new FileUserStorage(userWriter);
-        try {
-            userStorage.downloadUsersDatabase();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        return userStorage;
     }
 }

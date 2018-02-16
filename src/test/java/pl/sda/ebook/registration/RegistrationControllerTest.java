@@ -26,7 +26,7 @@ public class RegistrationControllerTest {
         Response result = new RegistrationController(userStorage).register(VALID_LOGIN, PASSWORD);
 
         assertTrue(result.isSuccess());
-        verify(this.userStorage).exist(VALID_LOGIN);
+        verify(this.userStorage).existLogin(VALID_LOGIN);
     }
 
     @Test
@@ -40,7 +40,7 @@ public class RegistrationControllerTest {
 
     @Test
     public void shouldRefuseToRegisterIfUserAlreadyExists() throws UserAlreadyExistExceptions, IOException {
-        BDDMockito.given(userStorage.exist(VALID_LOGIN)).willReturn(true);
+        BDDMockito.given(userStorage.existLogin(VALID_LOGIN)).willReturn(true);
 
         Response result = new RegistrationController(userStorage).register(VALID_LOGIN, PASSWORD);
 

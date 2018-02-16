@@ -21,7 +21,6 @@ public class OpenPanel {
 
     public void openPanel() throws UserAlreadyExistExceptions, IOException {
 
-//        Scanner scanner = new Scanner(System.in);
         boolean isWorking = true;
 
         showMessagesPanel();

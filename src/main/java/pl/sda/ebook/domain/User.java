@@ -18,4 +18,12 @@ public class User {
         return password;
     }
 
+    public String toJSON() {
+        return "{" + "login:" + login + "," +
+                "password:" + password + "}";
+    }
+
+    public boolean hasTheSamePasswordAs(String password) {
+        return this.password.equals(password);
+    }
 }

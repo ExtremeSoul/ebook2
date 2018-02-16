@@ -14,7 +14,7 @@ public class LogInView {
         this.systemInterface = systemInterface;
     }
 
-    public void logIn() throws FileNotFoundException {
+    public void logIn() {
         systemInterface.display("Enter your login:");
         String login = systemInterface.read();
         systemInterface.display("Enter your password:");
